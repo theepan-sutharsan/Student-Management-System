@@ -12,4 +12,4 @@ if __name__ == "__main__":
       with app.app_context():
         from app.extensions import db
         db.create_all()
-app.run()
+app.run(port=8080)
