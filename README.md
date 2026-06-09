@@ -15,3 +15,13 @@
     "email": "john.smith@university.edu",
     "department": "Computer Science"
   }
+
+ ### Post `api/courses` ==> create courses
+
+  {
+    "course_code": "CS101",
+    "course_name": "Introduction to Programming",
+    "credits": 3,
+    "lecturer_id": 1
+  }
+  
