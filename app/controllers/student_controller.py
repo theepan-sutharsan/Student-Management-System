@@ -1,10 +1,7 @@
-from datetime import datetime
-
 from flask import jsonify, request
-
 from app.extensions import db
 from app.models.student_model import Student
-
+from datetime import datetime
 
 def _validate_student_payload(data, student_id=None):
     errors = []
@@ -28,17 +25,6 @@ def _validate_student_payload(data, student_id=None):
             q = q.filter(Student.id != student_id)
         if q.first():
             errors.append("Email address already exists.")
-
-  
-        date_of_birth = data.get("date_of_birth")
-        if date_of_birth is None or str(date_of_birth).strip() == "":
-            errors.append("date_of_birth is required.")
-        else:
-            try:
-                datetime.strptime(str(date_of_birth).strip(), "%Y-%m-%d")
-            except ValueError:
-                errors.append("date_of_birth must be in YYYY-MM-DD format.")
-
     return errors
 
 
