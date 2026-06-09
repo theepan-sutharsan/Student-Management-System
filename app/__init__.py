@@ -11,7 +11,7 @@ def create_app():
     app.config.from_object(Config)
     db.init_app(app)
 
-    from app.models import Student, Lecturer
+    from app.models import Student, Lecturer, Course 
     register_blueprints(app)
 
     @app.errorhandler(OperationalError)
