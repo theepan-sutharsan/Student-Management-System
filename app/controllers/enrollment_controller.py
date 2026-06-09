@@ -29,7 +29,8 @@ def create_enrollment():
         enrollment = Enrollment(
             student_id=data.get("student_id"),
             course_id=data.get("course_id"),
-            status=data.get("status", "enrolled")
+            status=data.get("status", "enrolled"),
+            enrollment_date=data.get("enrollment_date")
         )
         db.session.add(enrollment)
         db.session.commit()
@@ -65,7 +66,8 @@ def update_enrollment(enrollment_id):
     try:
         enrollment.student_id = data.get("student_id")
         enrollment.course_id = data.get("course_id")
-        enrollment.status = data.get("status", "enrolled") 
+        enrollment.status = data.get("status", "enrolled")
+        enrollment.enrollment_date = data.get("enrollment_date")
         db.session.commit()
         return jsonify({"message": "Enrollment updated successfully.", "enrollment": enrollment.to_dict()}), 200
     except Exception:
